@@ -1,0 +1,26 @@
+garage door opener - research
+
+two great posts here: 
+    - https://electronics.stackexchange.com/questions/141076/what-is-the-name-of-the-protocols-used-to-let-an-automatic-garage-door-opener/279059
+    - first about a potential solution by emulating the button press https://electronics.stackexchange.com/a/141090
+    - second is explanation of how multiplexing works with actual example https://electronics.stackexchange.com/a/141088
+        - links to http://www.instructables.com/id/How-to-access-5-buttons-through-1-Arduino-input/
+    - another is how they probed the openeer https://electronics.stackexchange.com/a/279059
+
+
+
+
+Dependencies:
+- Swift on raspbian https://www.uraimo.com/2018/06/13/A-big-update-on-Swift-4-1-2-for-raspberry-pi-zero-1-2-3/
+- Swift server on linux https://github.com/PerfectlySoft/Perfect
+- Swift crypto library on linux (https://cryptoswift.io)
+- swift gpio https://github.com/uraimo/SwiftyGPIO
+- [tutorial] Using swift to control gpio https://hackernoon.com/setting-up-a-swift-development-environment-on-raspberry-pi-c7af7fceac1e
+
+
+
+Process:
+1) installed Swift on raspbian using pre-compiled binaries: https://www.uraimo.com/2017/09/06/A-small-update-on-Swift-for-raspberry-pi-zero-1-2-3/
+2) Resolve "swift package init
+/home/pi/swiftaug17/usr/bin/swift-package: error while loading shared libraries: libpthread_workqueue.so.0: cannot open shared object file: No such file or directory"
+        -> sudo apt-get install libpthread-workqueue-dev
