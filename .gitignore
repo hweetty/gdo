@@ -2,3 +2,7 @@
 /.build
 /Packages
 /*.xcodeproj
+
+
+Source/iOS/Dependencies/*
+Source/iOS/gdo.xcodeproj/project.xcworkspace/xcuserdata/*
