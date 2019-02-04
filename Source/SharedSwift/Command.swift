@@ -13,53 +13,52 @@ enum CommandDecodeError: Error {
 }
 
 struct CommandWrapper: Codable {
-	let commandString: String
+	let commandData: Data
 	let hmac: String
 
-	public static decode(jsonString: String) throws -> Command {
+	public static func decode(jsonString: String) throws -> Command {
 		let decoder = JSONDecoder()
-		let commandWrapper = try decoder.object(from: jsonString)
+		let commandWrapper = try decoder.decode(CommandWrapper.self, from: jsonString.data(using: .utf8)!)
 
 		// Verify hmac
 		try SecurityHelper.verifySecurity(of: commandWrapper)
 
-		let command = try decoder.object(from: commandWrapper.commandString)
+		let command = try decoder.decode(Command.self, from: commandWrapper.commandData)
 		return command
 	}
 }
 
 extension CommandWrapper {
-	static func serialize(type: CommandType, commandDetails: Codable, user: User) -> String {
+	static func serialize<T: Encodable>(type: CommandType, commandDetails: T, user: User) -> Data {
 		let encoder = JSONEncoder()
 
 		let version = 0
 		let timestamp = Date().timeIntervalSince1970
 
-		let command = Command(
-			version: version,
-			userId: user.userId,
-			timestamp: timestamp,
-			type: type,
-			parameters: try! encoder.encode(object: parameters)
-		)
-
 		do {
-			let commandstring = try encoder.encode(object: command)
-			let hmac = SecurityHelper.generateHmac(from: wrapperstring, hmacKey: user.hmacKey)
-			let commandWrapper = CommandWrapper(commandString: commandString, hmac: hmac)
+			let command = Command(
+				version: version,
+				userId: user.userId,
+				timestamp: timestamp,
+				type: type,
+				details: try encoder.encode(commandDetails)
+			)
 
-			let commandWrapperString = encoder.encode(object: commandWrapper)
+			let commandData = try encoder.encode(command)
+			let hmac = SecurityHelper.generateHmac(from: commandData, hmacKey: user.hmacKey)
+			let commandWrapper = CommandWrapper(commandData: commandData, hmac: hmac)
+
+			let commandWrapperString = try encoder.encode(commandWrapper)
 			return commandWrapperString
 		} catch {
 			fatalError()
 		}
-		return command
 	}
 }
 
 // MARK: Commands
 
-enum CommandType: String {
+enum CommandType: String, Codable {
 	case status
 	case toggle
 }
@@ -73,7 +72,7 @@ struct Command: Codable {
 
 	// MARK: Actual command
 	let type: CommandType
-	let parameters: String
+	let details: Data
 }
 
 struct StatusCommandDetails: Codable {

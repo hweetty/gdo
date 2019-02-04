@@ -6,6 +6,8 @@
 //  Copyright © 2019 Jerry Yu. All rights reserved.
 //
 
+import Foundation
+
 struct SecurityHelper {
 
     // Private to prevent creating instances of this struct (only static functions are supported)
@@ -13,12 +15,10 @@ struct SecurityHelper {
 
     static func verifySecurity(of wrapper: CommandWrapper) throws {
         throw CommandDecodeError.invalidHmac
-
-        return true // fixme
     }
 
-    /// Uses privatekey to generate hmcamc=o com   s
-    static func generateHmac(from: String, hmacKey: String) -> String {
+    /// Uses privatekey to generate hmac for given data
+    static func generateHmac(from data: Data, hmacKey: String) -> String {
         return "fixme"
     }
 }

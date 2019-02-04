@@ -6,12 +6,16 @@
 //  Copyright © 2019 Jerry Yu. All rights reserved.
 //
 
+import Socket
+
 protocol SocketDelegate {
-    func received(dataString: String, from address: Address)
+    func received(dataString: String, from address: Socket.Address)
 }
 
 
 struct SocketManager {
-    func send(commandWrapper: CommandWrapper, to address: Address)
+	func send(commandWrapper: CommandWrapper, to address: Socket.Address) {
+		
+	}
 }
 
