@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Socket",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
+        "state": {
+          "branch": null,
+          "revision": "26c8f4e4e3000421a0c97aaf0c7b5e9aa5475222",
+          "version": "0.12.94"
+        }
+      },
+      {
+        "package": "SwiftyGPIO",
+        "repositoryURL": "https://github.com/uraimo/SwiftyGPIO.git",
+        "state": {
+          "branch": null,
+          "revision": "0ea60fd66e35571726b6abeb6abf0e28e1726918",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

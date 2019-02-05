@@ -5,7 +5,7 @@ let GLog = Logger()
 class ServerController: SocketDelegate {
 
     private let user = User(userId: "123", hmacKey: "456")
-    private let socket: Socket
+    private let socket: SocketServer
     private let toggleController = ToggleController()
 
     func sendStatusTo(address: Address) {
