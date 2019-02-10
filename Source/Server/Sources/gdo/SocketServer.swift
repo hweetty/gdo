@@ -11,83 +11,84 @@ import Socket
 import Dispatch
 
 protocol ServerRequestHandler: class {
-    func received(dataString: String, from address: Socket.Address)
+    func received(dataString: String, from hostName: String)
 }
 
 class SocketServer {
 
-	let port: Int
-	var listenSocket: Socket? = nil
-	var continueRunning = true
-	var connectedSockets = [Int32: Socket]()
-	let socketLockQueue = DispatchQueue(label: "com.ibm.serverSwift.socketLockQueue")
+    let port: Int
+    var listenSocket: Socket? = nil
+    var continueRunning = true
+    var connectedSockets = [Int32: Socket]()
+    let socketLockQueue = DispatchQueue(label: "com.ibm.serverSwift.socketLockQueue")
 
-	weak var delegate: ServerRequestHandler?
+    weak var delegate: ServerRequestHandler?
 
-	init(port: Int) {
-		self.port = port
-	}
+    init(port: Int) {
+        self.port = port
+    }
 
-	deinit {
-		// Close all open sockets...
-		for socket in connectedSockets.values {
-			socket.close()
-		}
-		self.listenSocket?.close()
-	}
+    deinit {
+        // Close all open sockets...
+        for socket in connectedSockets.values {
+            socket.close()
+        }
+        self.listenSocket?.close()
+    }
 
-	func run() {
+    func run() {
 
-		let queue = DispatchQueue.global(qos: .userInteractive)
+        let queue = DispatchQueue.global(qos: .userInteractive)
 
-		queue.async { [unowned self] in
+        queue.async { [unowned self] in
 
-			do {
-				try self.listenSocket = Socket.create(family: .inet, type: .datagram, proto: .udp)
+            do {
+                try self.listenSocket = Socket.create(family: .inet, type: .datagram, proto: .udp)
 
-				guard let socket = self.listenSocket else {
+                guard let socket = self.listenSocket else {
 
-					print("Unable to unwrap socket...")
-					return
-				}
+                    print("Unable to unwrap socket...")
+                    return
+                }
 
-				repeat {
-					let buffer = UnsafeMutablePointer<CChar>.allocate(capacity: 1024)
-					let (bytesRead, address) = try socket.listen(forMessage: buffer, bufSize: 1024, on: self.port)
-print("xxxx: \(bytesRead)")
-					// Hack: force terminate string
-					let index = min(1023, bytesRead)
-					buffer[index] = 0
+                repeat {
+                    let buffer = UnsafeMutablePointer<CChar>.allocate(capacity: 1024)
+                    let (bytesRead, address) = try socket.listen(forMessage: buffer, bufSize: 1024, on: self.port)
+                    print("xxxx: \(bytesRead) from \(socket.remoteHostname)")
+                    // Hack: force terminate string
+                    let index = min(1023, bytesRead)
+                    buffer[index] = 0
 
-					let dataStr = String(cString: buffer)
-					guard dataStr.count > 0 else {
-						continue
-					}
+                    let dataStr = String(cString: buffer)
+                    guard dataStr.count > 0 else {
+                        continue
+                    }
 
-//					guard let address = address else {
-//						continue
-//					}
+                    guard socket.remoteHostname != Socket.NO_HOSTNAME else {
+                        GDOLog.logError("Received a socket without a host name")
+                        continue
+                    }
 
-					self.delegate?.received(dataString: dataStr, from: address)
-//					print("received connection from: \(address), bytesRead: \(bytesRead)")
-				} while self.continueRunning
+                    self.delegate?.received(dataString: dataStr, from: socket.remoteHostname)
+//                  print("received connection from: \(address), bytesRead: \(bytesRead)")
+                } while self.continueRunning
 
-			}
-			catch let error {
-				guard let socketError = error as? Socket.Error else {
-					print("Unexpected error...")
-					return
-				}
+            }
+            catch let error {
+                guard let socketError = error as? Socket.Error else {
+                    print("Unexpected error...")
+                    return
+                }
 
-				if self.continueRunning {
+                if self.continueRunning {
 
-					print("Error reported:\n \(socketError.description)")
+                    print("Error reported:\n \(socketError.description)")
 
-				}
-			}
-		}
-		dispatchMain()
-	}
+                }
+            }
+        }
+        dispatchMain()
+    }
 }
 
 

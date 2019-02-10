@@ -1,5 +1,6 @@
+import Foundation
 
-func waitForever() -> Never {
-    let sem = DispatchSemaphore(0)
+func waitForever() {
+    let sem = DispatchSemaphore(value: 0)
     sem.wait()
 }

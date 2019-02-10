@@ -20,7 +20,7 @@ class ToggleController {
     public func requestToggle(timestamp: TimeInterval) {
         // Make sure not toggling too quickly
         guard timestamp >= lastToggleTime + minDelayBetweenToggle else {
-            GLog("Tried to toggle but did not meet delay threshold: \nlastToggleTime: \(lastToggleTime) \ntimestamp: \(timestamp)")
+            GDOLog.logError("Tried to toggle but did not meet delay threshold: \nlastToggleTime: \(lastToggleTime) \ntimestamp: \(timestamp)")
             return
         }
 

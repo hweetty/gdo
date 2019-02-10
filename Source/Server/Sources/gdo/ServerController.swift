@@ -1,8 +1,10 @@
+import Foundation
 import Socket
+
+let GDOLog = Logger()
 
 class ServerController: ServerRequestHandler {
 
-    private let logger = Logger()
     private let user = User(userId: "123", hmacKey: "456")
     private let socket: SocketServer
     private let toggleController = ToggleController()
@@ -13,25 +15,38 @@ class ServerController: ServerRequestHandler {
         socket.run()
     }
 
-    func sendStatusTo(address: Socket.Address) {
+    func sendStatus(to hostName: String) {
         let status = StatusCommandDetails(isGarageOpen: false)
-        let wrapperString = CommandWrapper.serialize(type: .status, commandDetails: status, user: user)
-        socket.send(dataString: wrapperString, to: address)
+        let wrapperData = CommandWrapper.serialize(type: .status, commandDetails: status, user: user)
+        send(data: wrapperData, to: hostName)
+    }
+
+    private func send(data: Data, to hostName: String) {
+        do {
+            GDOLog.logDebug("Sending data of length \(data.count) to hostName \(hostName)")
+            let socket = try Socket.create(family: .inet, type: .datagram, proto: .udp)
+            try socket.connect(to: hostName, port: 13370)
+            try socket.write(from: data)
+        } catch {
+            GDOLog.logError("\(error.localizedDescription)")
+        }
     }
 
     // MARK: SocketDelegate
 
-    func received(dataString: String, from address: Socket.Address) {
+    func received(dataString: String, from hostName: String) {
         do {
-            let command = try CommandWrapper.decode(jsonString: string)
+            let command = try CommandWrapper.decode(jsonString: dataString)
 
-            switch command {
+            switch command.type {
             case .status:
-                sendStatusTo(address: address)
+                sendStatus(to: hostName)
 
             case .toggle:
                 toggleController.requestToggle(timestamp: command.timestamp)
             }
+        } catch {
+            GDOLog.logError("\(error.localizedDescription)")
         }
     }
 }
