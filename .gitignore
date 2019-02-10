@@ -1,8 +1,13 @@
 .DS_Store
 /.build
+**/.build
 /Packages
 /*.xcodeproj
 
+**/*.xcodeproj/project.xcworkspace/xcuserdata/*
 
+# iOS
 Source/iOS/Dependencies/*
 Source/iOS/gdo.xcodeproj/project.xcworkspace/xcuserdata/*
+
+# Server

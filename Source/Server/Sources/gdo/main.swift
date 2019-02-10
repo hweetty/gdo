@@ -18,27 +18,12 @@ func toggle(_ gp: GPIO) {
 	gp.value = 1	
 }
 
-class MyRequestHandler: ServerRequestHandler {
-    func receivedMessage(str: String, from address: Socket.Address?) {
-	if str == "hello\n" {
-		print("toggling...")
-//		toggle(gp0)
-	}
-	print("received message: '\(str)' from: \(address)")
-    }
-}
-
-
 //toggle(gp0)
 
 // echo "This is my data" > /dev/udp/192.168.1.85/13371
 let port = 13371
-let server = EchoServer(port: port)
-server.delegate = MyRequestHandler()
+let server = ServerController(port: port)
 print("Swift Echo Server Sample")
-print("Connect with a command line window by entering 'telnet ::1 \(port)'")
-
-server.run()
 
 print("Exiting.")
 

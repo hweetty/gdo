@@ -11,7 +11,7 @@ import Socket
 import Dispatch
 
 protocol ServerRequestHandler: class {
-    func receivedMessage(str: String, from address: Socket.Address?)
+    func received(dataString: String, from address: Socket.Address)
 }
 
 class SocketServer {
@@ -22,7 +22,7 @@ class SocketServer {
 	var connectedSockets = [Int32: Socket]()
 	let socketLockQueue = DispatchQueue(label: "com.ibm.serverSwift.socketLockQueue")
 
-	var delegate: ServerRequestHandler?
+	weak var delegate: ServerRequestHandler?
 
 	init(port: Int) {
 		self.port = port
@@ -64,7 +64,11 @@ print("xxxx: \(bytesRead)")
 						continue
 					}
 
-					self.delegate?.receivedMessage(str: dataStr, from: address)
+//					guard let address = address else {
+//						continue
+//					}
+
+					self.delegate?.received(dataString: dataStr, from: address)
 //					print("received connection from: \(address), bytesRead: \(bytesRead)")
 				} while self.continueRunning
 

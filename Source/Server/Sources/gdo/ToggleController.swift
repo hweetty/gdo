@@ -6,6 +6,8 @@
 //  Copyright © 2019 Jerry Yu. All rights reserved.
 //
 
+import Foundation
+
 class ToggleController {
 
     private let minDelayBetweenToggle = TimeInterval(5) // TODO: verify this
@@ -30,7 +32,7 @@ class ToggleController {
         toggleDoor()
     }
 
-    private toggleDoor() {
+    private func toggleDoor() {
 
     }
 }
