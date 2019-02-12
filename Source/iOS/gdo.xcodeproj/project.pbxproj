@@ -10,7 +10,6 @@
 		F1233C5022100B0100EC85D9 /* SecurityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4B22100B0100EC85D9 /* SecurityHelper.swift */; };
 		F1233C5222100B0100EC85D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4D22100B0100EC85D9 /* User.swift */; };
 		F1233C5322100B0100EC85D9 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4E22100B0100EC85D9 /* Command.swift */; };
-		F1233C5422100B0100EC85D9 /* SocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4F22100B0100EC85D9 /* SocketDelegate.swift */; };
 		F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */; };
 		F15D5A1D21B7A99D00E211F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1C21B7A99D00E211F4 /* ViewController.swift */; };
 		F15D5A2021B7A99D00E211F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A1E21B7A99D00E211F4 /* Main.storyboard */; };
@@ -19,6 +18,9 @@
 		F15D5A3021B7A9A100E211F4 /* gdoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A2F21B7A9A100E211F4 /* gdoTests.swift */; };
 		F15D5A8921B7AA2300E211F4 /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15D5A7021B7AA0B00E211F4 /* Socket.framework */; };
 		F15D5A8A21B7AA2300E211F4 /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F15D5A7021B7AA0B00E211F4 /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F169EC6D221299F300AB5F8C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC69221299F300AB5F8C /* Logger.swift */; };
+		F169EC6F22129A0300AB5F8C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC6E22129A0300AB5F8C /* Environment.swift */; };
+		F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC7022129A7200AB5F8C /* SocketHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +86,6 @@
 		F1233C4B22100B0100EC85D9 /* SecurityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityHelper.swift; sourceTree = "<group>"; };
 		F1233C4D22100B0100EC85D9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1233C4E22100B0100EC85D9 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		F1233C4F22100B0100EC85D9 /* SocketDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketDelegate.swift; sourceTree = "<group>"; };
 		F15D5A1721B7A99D00E211F4 /* gdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F15D5A1C21B7A99D00E211F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +97,9 @@
 		F15D5A2F21B7A9A100E211F4 /* gdoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gdoTests.swift; sourceTree = "<group>"; };
 		F15D5A3121B7A9A100E211F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = BlueSocket.xcodeproj; sourceTree = "<group>"; };
+		F169EC69221299F300AB5F8C /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		F169EC6E22129A0300AB5F8C /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		F169EC7022129A7200AB5F8C /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,10 +124,12 @@
 		F1233C4A22100B0100EC85D9 /* SharedSwift */ = {
 			isa = PBXGroup;
 			children = (
-				F1233C4B22100B0100EC85D9 /* SecurityHelper.swift */,
-				F1233C4D22100B0100EC85D9 /* User.swift */,
 				F1233C4E22100B0100EC85D9 /* Command.swift */,
-				F1233C4F22100B0100EC85D9 /* SocketDelegate.swift */,
+				F169EC6E22129A0300AB5F8C /* Environment.swift */,
+				F169EC69221299F300AB5F8C /* Logger.swift */,
+				F1233C4B22100B0100EC85D9 /* SecurityHelper.swift */,
+				F169EC7022129A7200AB5F8C /* SocketHelper.swift */,
+				F1233C4D22100B0100EC85D9 /* User.swift */,
 			);
 			name = SharedSwift;
 			path = ../Server/Sources/gdo/SharedSwift;
@@ -332,10 +338,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F15D5A1D21B7A99D00E211F4 /* ViewController.swift in Sources */,
+				F169EC6F22129A0300AB5F8C /* Environment.swift in Sources */,
 				F1233C5022100B0100EC85D9 /* SecurityHelper.swift in Sources */,
 				F1233C5222100B0100EC85D9 /* User.swift in Sources */,
-				F1233C5422100B0100EC85D9 /* SocketDelegate.swift in Sources */,
+				F169EC6D221299F300AB5F8C /* Logger.swift in Sources */,
 				F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */,
+				F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */,
 				F1233C5322100B0100EC85D9 /* Command.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

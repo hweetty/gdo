@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyGPIO
 
 class ToggleController {
 
@@ -17,6 +18,14 @@ class ToggleController {
 
     private var lastToggleTime = TimeInterval(0)
 
+    private let gpios = SwiftyGPIO.GPIOs(for:.RaspberryPi3)
+    private let doorPin: GPIO
+
+    init() {
+        self.doorPin = gpios[.P17]!
+        doorPin.direction = .OUT
+    }
+
     public func requestToggle(timestamp: TimeInterval) {
         // Make sure not toggling too quickly
         guard timestamp >= lastToggleTime + minDelayBetweenToggle else {
@@ -26,13 +35,14 @@ class ToggleController {
 
         // Make sure not toggling with timestamp in the future
 
-
-
         lastToggleTime = timestamp
         toggleDoor()
     }
 
     private func toggleDoor() {
-
+        let interval: UInt32 = 500 * 1000 // 1000 is 0.001 seconds
+        doorPin.value = 0
+        print("sleeping \(interval)"); usleep(interval); print("wake")
+        doorPin.value = 1
     }
 }

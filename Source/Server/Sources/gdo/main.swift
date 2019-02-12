@@ -1,29 +1,17 @@
 import Foundation
-import SwiftyGPIO
 import Socket
 
-print("Hello, world!")
-
-let gpios = SwiftyGPIO.GPIOs(for:.RaspberryPi3)
-
-var gp0 = gpios[.P17]!
-gp0.direction = .IN
-
-
-func toggle(_ gp: GPIO) {
-	let interval: UInt32 = 500 * 1000 // 1000 is 0.001 seconds
-	gp.direction = .OUT
-	gp.value = 0
-	print("sleeping \(interval)"); usleep(interval); print("wake")
-	gp.value = 1	
+if CommandLine.argc >= 2 {
+    if CommandLine.arguments.contains("nodebug") {
+        Environment.isDebug = false
+    }
 }
 
-//toggle(gp0)
+GDOLog.logInfo("Running in \(Environment.isDebug ? "debug" : "prod") mode")
 
-// echo "This is my data" > /dev/udp/192.168.1.85/13371
-let port = 13371
+// echo "This is my data" > /dev/udp/192.168.1.85/13370
+let port = 1729
 let server = ServerController(port: port)
-print("Swift Echo Server Sample")
 
 print("Exiting.")
 

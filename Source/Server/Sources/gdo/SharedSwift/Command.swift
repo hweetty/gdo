@@ -48,10 +48,11 @@ extension CommandWrapper {
 			let hmac = SecurityHelper.generateHmac(from: commandData, hmacKey: user.hmacKey)
 			let commandWrapper = CommandWrapper(commandData: commandData, hmac: hmac)
 
-			let commandWrapperString = try encoder.encode(commandWrapper)
-			return commandWrapperString
+			let data = try encoder.encode(commandWrapper)
+			return data
 		} catch {
-			fatalError()
+			GDOLog.logError(error.localizedDescription)
+			fatalError(error.localizedDescription)
 		}
 	}
 }

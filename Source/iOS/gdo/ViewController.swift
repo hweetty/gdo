@@ -9,21 +9,22 @@
 import UIKit
 import Socket
 
+let GDOLog = Logger()
+
 class ViewController: UIViewController {
+
+	let port = 1729
+	let hostName = "192.168.1.85"
+
+	let user = User(userId: "test1", hmacKey: "123asd")
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	}
 
 	func toggle() {
-		do {
-			let socket = try Socket.create(family: .inet, type: .datagram, proto: .udp)
-			try socket.connect(to: "192.168.1.85", port: 13370)
-			try socket.write(from: "hello\n")
-			print("done")
-		} catch {
-			print(error)
-		}
+		let commandData = CommandWrapper.serialize(type: .toggle, commandDetails: Dictionary<String, String>(), user: user)
+		SocketHelper.send(data: commandData, to: hostName, port: port)
 	}
 
 	@IBAction func toggleButtonPressed(_ sender: Any) {
