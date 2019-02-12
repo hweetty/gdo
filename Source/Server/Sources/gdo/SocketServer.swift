@@ -54,14 +54,15 @@ class SocketServer {
                 repeat {
                     let bufferSize = 1024
                     let buffer = UnsafeMutablePointer<CChar>.allocate(capacity: bufferSize)
-                    let (bytesRead, address) = try socket.listen(forMessage: buffer, bufSize: bufferSize, on: self.port)
+                    let (bytesRead, maybeAddress) = try socket.listen(forMessage: buffer, bufSize: bufferSize, on: self.port)
 
-                    guard let address = address,
-                        let (host, port) = Socket.hostnameAndPort(from: address!) else {
+                    guard let address = maybeAddress,
+                        let (hostName, port) = Socket.hostnameAndPort(from: address) else {
                             GDOLog.logError("Could not determine address ")
+                            continue
                     }
 
-                    GDOLog.logInfo("Read \(bytesRead) from host: \(host):\(port)")
+                    GDOLog.logInfo("Read \(bytesRead) from host: \(hostName):\(port)")
 
                     // Hack: force terminate string
                     let index = min(bufferSize-1, bytesRead)
@@ -72,12 +73,7 @@ class SocketServer {
                         continue
                     }
 
-                    guard socket.remoteHostname != Socket.NO_HOSTNAME else {
-                        GDOLog.logError("Received a socket without a host name")
-                        continue
-                    }
-
-                    self.delegate?.received(dataString: dataStr, from: socket.remoteHostname)
+                    self.delegate?.received(dataString: dataStr, from: hostName)
                 } while self.continueRunning
 
             }

@@ -7,14 +7,14 @@ protocol Loggable {
 class Logger: Loggable {
 
     func logDebug(_ message: String) {
-        print("logDebug: \(message)")
+        print(" \(message)")
     }
 
     func logInfo(_ message: String) {
-        print("logInfo: \(message)")
+		print("⚠️:  \(message)")
     }
 
     func logError(_ message: String, file: String = #file, line: Int = #line) {
-        print("logError! Line \(line) of \(file): \(message)")
+		print("🔥: Line \(line) of \(file): \(message)")
     }
 }

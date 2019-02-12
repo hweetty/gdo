@@ -10,20 +10,31 @@ import Foundation
 
 enum CommandDecodeError: Error {
 	case invalidHmac
+	case generic(String)
 }
 
 struct CommandWrapper: Codable {
 	let commandData: Data
 	let hmac: String
 
+
 	public static func decode(jsonString: String) throws -> Command {
+		guard let data = jsonString.data(using: .utf8) else {
+			throw CommandDecodeError.generic("GDO error: Failed to convert jsonString into data")
+		}
+
+		GDOLog.logDebug("Trying to decode data:\n\(data)\n")
 		let decoder = JSONDecoder()
-		let commandWrapper = try decoder.decode(CommandWrapper.self, from: jsonString.data(using: .utf8)!)
+		let commandWrapper = try decoder.decode(CommandWrapper.self, from: data)
+		GDOLog.logDebug("1) Decoded commandWrapper")
 
 		// Verify hmac
 		try SecurityHelper.verifySecurity(of: commandWrapper)
+		GDOLog.logDebug("2) Verified hmac")
 
 		let command = try decoder.decode(Command.self, from: commandWrapper.commandData)
+		GDOLog.logDebug("3) Decoded command")
+
 		return command
 	}
 }
