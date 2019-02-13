@@ -29,7 +29,7 @@ class ToggleController {
     public func requestToggle(timestamp: TimeInterval) {
         // Make sure not toggling too quickly
         guard timestamp >= lastToggleTime + minDelayBetweenToggle else {
-            GDOLog.logError("Tried to toggle but did not meet delay threshold: \nlastToggleTime: \(lastToggleTime) \ntimestamp: \(timestamp)")
+            GDOLog.logError("Tried to toggle but did not meet delay threshold: \nlastToggleTime:\t\t\(lastToggleTime) \ntimestamp:\t\t\(timestamp)")
             return
         }
 
@@ -40,6 +40,11 @@ class ToggleController {
     }
 
     private func toggleDoor() {
+        guard !Environment.isDebug else {
+            GDOLog.logInfo("toggleDoor() called but we are in debug mode")
+            return
+        }
+
         let interval: UInt32 = 500 * 1000 // 1000 is 0.001 seconds
         doorPin.value = 0
         print("sleeping \(interval)"); usleep(interval); print("wake")
