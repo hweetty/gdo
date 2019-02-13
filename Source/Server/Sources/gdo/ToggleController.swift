@@ -11,15 +11,16 @@ import SwiftyGPIO
 
 class ToggleController {
 
-    private let minDelayBetweenToggle = TimeInterval(5) // TODO: verify this
-
-    private let maxTimeDifferenceInFuture = TimeInterval(3)
-    private let maxTimeDifferenceInPast = TimeInterval(3)
-
-    private var lastToggleTime = TimeInterval(0)
-
     private let gpios = SwiftyGPIO.GPIOs(for:.RaspberryPi3)
     private let doorPin: GPIO
+
+    // Make sure we do not get spammed
+    private let minDelayBetweenToggle = TimeInterval(0.5)
+    private let maxTimeDifferenceInFuture = TimeInterval(3)
+    private let maxTimeDifferenceInPast = TimeInterval(3)
+    private var lastToggleTime = TimeInterval(0)
+
+    // TODO: Only allow say 5 toggles per minute
 
     init() {
         self.doorPin = gpios[.P17]!

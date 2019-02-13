@@ -7,7 +7,9 @@ class ServerController: ServerRequestHandler {
 
     private let user = User(userId: "123", hmacKey: "456")
     private let socket: SocketServer
+
     private let toggleController = ToggleController()
+    private let statusController = StatusController()
 
     init(port: Int) {
         GDOLog.logInfo("Listening on port \(port)")
@@ -17,7 +19,7 @@ class ServerController: ServerRequestHandler {
     }
 
     func sendStatus(to hostName: String) {
-        let status = StatusCommandDetails(isGarageOpen: false)
+        let status = StatusCommandDetails(isGarageOpen: statusController.status == .open)
         let wrapperData = CommandWrapper.serialize(type: .status, commandDetails: status, user: user)
         SocketHelper.send(data: wrapperData, to: hostName, port: Environment.clientListeningPort)
     }

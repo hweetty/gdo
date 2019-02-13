@@ -23,7 +23,7 @@ struct CommandWrapper: Codable {
 			throw CommandDecodeError.generic("GDO error: Failed to convert jsonString into data")
 		}
 
-		GDOLog.logDebug("Trying to decode data:\n\(data)\n")
+		GDOLog.logDebug("Trying to decode data: \(data)")
 		let decoder = JSONDecoder()
 		let commandWrapper = try decoder.decode(CommandWrapper.self, from: data)
 		GDOLog.logDebug("1) Decoded commandWrapper")
