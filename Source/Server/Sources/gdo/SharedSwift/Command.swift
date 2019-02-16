@@ -75,7 +75,7 @@ enum CommandType: String, Codable {
 	case toggle
 }
 
-struct Command: Codable {
+struct Command: Codable, CustomStringConvertible {
 
 	// MARK: Meta-data
 	let version: Int
@@ -85,6 +85,10 @@ struct Command: Codable {
 	// MARK: Actual command
 	let type: CommandType
 	let details: Data
+
+	var description: String {
+		return "\(type.rawValue.uppercased()): \(timestamp)   user: \(userId)"
+	}
 }
 
 struct StatusCommandDetails: Codable {

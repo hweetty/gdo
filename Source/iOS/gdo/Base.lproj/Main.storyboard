@@ -36,15 +36,28 @@
                                     <action selector="toggleButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pyD-Pe-Tfr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reZ-sD-xok">
+                                <rect key="frame" x="16" y="140" width="343" height="232"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.95098428672316382" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sEP-KT-BtE" secondAttribute="bottom" constant="60" id="1Pv-l7-xY8"/>
+                            <constraint firstItem="sEP-KT-BtE" firstAttribute="top" secondItem="reZ-sD-xok" secondAttribute="bottom" constant="175" id="1ul-w0-Pvx"/>
+                            <constraint firstItem="reZ-sD-xok" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="6Yj-sJ-Vvw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="reZ-sD-xok" secondAttribute="trailing" constant="16" id="A3V-Zv-gax"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sEP-KT-BtE" secondAttribute="trailing" constant="16" id="GbS-SH-Rv3"/>
+                            <constraint firstItem="reZ-sD-xok" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="a92-To-CPy"/>
                             <constraint firstItem="sEP-KT-BtE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hzh-ed-AhU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="statusLabel" destination="reZ-sD-xok" id="zup-ZY-N2G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

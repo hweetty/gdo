@@ -17,27 +17,23 @@ protocol ServerRequestHandler: class {
 class SocketServer {
 
     let port: Int
-    var listenSocket: Socket? = nil
-    var continueRunning = true
-    var connectedSockets = [Int32: Socket]()
-    let socketLockQueue = DispatchQueue(label: "com.ibm.serverSwift.socketLockQueue")
+
+	private let queue: DispatchQueue?
+    private var listenSocket: Socket? = nil
 
     weak var delegate: ServerRequestHandler?
 
-    init(port: Int) {
+	/// queue:	Queue to be on when calling delegate
+	init(port: Int, using queue: DispatchQueue? = nil) {
         self.port = port
+		self.queue = queue
     }
 
     deinit {
-        // Close all open sockets...
-        for socket in connectedSockets.values {
-            socket.close()
-        }
         self.listenSocket?.close()
     }
 
     func run() {
-
         let queue = DispatchQueue.global(qos: .userInteractive)
 
         queue.async { [unowned self] in
@@ -51,7 +47,7 @@ class SocketServer {
                     return
                 }
 
-                repeat {
+                while true {
                     let bufferSize = 1024
                     let buffer = UnsafeMutablePointer<CChar>.allocate(capacity: bufferSize)
                     let (bytesRead, maybeAddress) = try socket.listen(forMessage: buffer, bufSize: bufferSize, on: self.port)
@@ -73,8 +69,14 @@ class SocketServer {
                         continue
                     }
 
-                    self.delegate?.received(dataString: dataStr, from: hostName)
-                } while self.continueRunning
+					if let queue = self.queue {
+						queue.async { [weak self] in
+							self?.delegate?.received(dataString: dataStr, from: hostName)
+						}
+					} else {
+						self.delegate?.received(dataString: dataStr, from: hostName)
+					}
+                }
 
             }
             catch let error {
@@ -83,15 +85,15 @@ class SocketServer {
                     return
                 }
 
-                if self.continueRunning {
-
-                    print("Error reported:\n \(socketError.description)")
-
-                }
+				print("Error reported:\n \(socketError.description)")
             }
         }
-        dispatchMain()
+
+		waitForever()
     }
 }
 
-
+func waitForever() {
+	let sem = DispatchSemaphore(value: 0)
+	sem.wait()
+}
