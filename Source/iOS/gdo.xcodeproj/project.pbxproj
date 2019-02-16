@@ -21,6 +21,7 @@
 		F169EC6D221299F300AB5F8C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC69221299F300AB5F8C /* Logger.swift */; };
 		F169EC6F22129A0300AB5F8C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC6E22129A0300AB5F8C /* Environment.swift */; };
 		F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC7022129A7200AB5F8C /* SocketHelper.swift */; };
+		F169EC732217DEB600AB5F8C /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC722217DEB600AB5F8C /* SocketServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		F169EC69221299F300AB5F8C /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		F169EC6E22129A0300AB5F8C /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F169EC7022129A7200AB5F8C /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
+		F169EC722217DEB600AB5F8C /* SocketServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketServer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				F169EC69221299F300AB5F8C /* Logger.swift */,
 				F1233C4B22100B0100EC85D9 /* SecurityHelper.swift */,
 				F169EC7022129A7200AB5F8C /* SocketHelper.swift */,
+				F169EC722217DEB600AB5F8C /* SocketServer.swift */,
 				F1233C4D22100B0100EC85D9 /* User.swift */,
 			);
 			name = SharedSwift;
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F169EC732217DEB600AB5F8C /* SocketServer.swift in Sources */,
 				F15D5A1D21B7A99D00E211F4 /* ViewController.swift in Sources */,
 				F169EC6F22129A0300AB5F8C /* Environment.swift in Sources */,
 				F1233C5022100B0100EC85D9 /* SecurityHelper.swift in Sources */,
