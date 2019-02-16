@@ -40,7 +40,7 @@ class StatusController {
         queue.async {
             repeat {
                 let newStatus = self.getCurrentStatus()
-                GDOLog.logDebug("New status is \(newStatus)")
+                // GDOLog.logDebug("New status is \(newStatus)")
 
                 DispatchQueue.main.async {
                     self.status = newStatus
@@ -72,7 +72,7 @@ class StatusController {
         let pulseDuration = pulseEndDate.timeIntervalSince(pulseStartDate)
         let distanceInCM = 17150 * pulseDuration
 
-        GDOLog.logDebug("Sonar distance: \(distanceInCM) cm")
+        // GDOLog.logDebug("Sonar distance: \(distanceInCM) cm")
 
         return .closed
     }

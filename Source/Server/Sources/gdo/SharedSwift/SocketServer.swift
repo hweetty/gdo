@@ -87,13 +87,6 @@ class SocketServer {
 
 				print("Error reported:\n \(socketError.description)")
             }
-        }
-
-		waitForever()
-    }
-}
-
-func waitForever() {
-	let sem = DispatchSemaphore(value: 0)
-	sem.wait()
+        } // queue.async
+    } // run
 }

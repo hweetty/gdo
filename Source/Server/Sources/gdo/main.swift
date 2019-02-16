@@ -13,5 +13,7 @@ GDOLog.logInfo("Running in \(Environment.isDebug ? "debug" : "prod") mode")
 let port = 1729
 let server = ServerController(port: port)
 
+waitForever()
+
 print("Exiting.")
 

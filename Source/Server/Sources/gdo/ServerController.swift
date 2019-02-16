@@ -3,25 +3,35 @@ import Socket
 
 let GDOLog = Logger()
 
-class ServerController: ServerRequestHandler {
+class ServerController: ServerRequestHandler, DelayedButtonControllerDelegate {
 
     private let user = User(userId: "123", hmacKey: "456")
     private let socket: SocketServer
 
     private let toggleController = ToggleController()
     private let statusController = StatusController()
+    private let delayedButtonController = DelayedButtonController()
 
     init(port: Int) {
         GDOLog.logInfo("Listening on port \(port)")
+
         self.socket = SocketServer(port: port)
         socket.delegate = self
         socket.run()
+
+        delayedButtonController.delegate = self
     }
 
     func sendStatus(to hostName: String) {
         let status = StatusCommandDetails(isGarageOpen: statusController.status == .open)
         let wrapperData = CommandWrapper.serialize(type: .status, commandDetails: status, user: user)
         SocketHelper.send(data: wrapperData, to: hostName, port: Environment.clientListeningPort)
+    }
+
+    // MARK: DelayedButtonControllerDelegate
+
+    func delayButtonTriggered() {
+        GDOLog.logInfo("sen")
     }
 
     // MARK: SocketDelegate
