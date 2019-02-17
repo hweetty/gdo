@@ -11,8 +11,7 @@ import SwiftyGPIO
 
 class ToggleController {
 
-    private let gpios = SwiftyGPIO.GPIOs(for:.RaspberryPi3)
-    private let doorPin: GPIO
+    private let doorPin = Environment.toggleDoorPin
 
     // Make sure we do not get spammed
     private let minDelayBetweenToggle = TimeInterval(0.5)
@@ -23,8 +22,8 @@ class ToggleController {
     // TODO: Only allow say 5 toggles per minute
 
     init() {
-        self.doorPin = gpios[.P17]!
         doorPin.direction = .OUT
+        doorPin.value = 1 // Don't trigger toggle on startup
     }
 
     public func requestToggle(timestamp: TimeInterval) {

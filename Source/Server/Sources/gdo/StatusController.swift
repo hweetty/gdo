@@ -17,20 +17,20 @@ class StatusController {
         case closed
     }
 
-    var status = Status.unknown
+    private(set) var status = Status.unknown
 
-    private let gpios = SwiftyGPIO.GPIOs(for:.RaspberryPi3)
-    private let triggerPin: GPIO
-    private let echoPin: GPIO
+    /// Maximum distance in cm that we still count as door being closed
+    private let doorClosedMaxDistanceThreshold = Environment.doorClosedMaxDistanceThreshold
+
+    private let triggerPin = Environment.triggerPin
+    private let echoPin = Environment.echoPin
 
     private let queue = DispatchQueue(label: "ca.jerryyu.gdo.statusQueue")
 
     init() {
-        self.triggerPin = gpios[.P23]!
         triggerPin.direction = .OUT
         triggerPin.value = 0
 
-        self.echoPin = gpios[.P24]!
         echoPin.direction = .IN
 
         pollStatusInBackground()
@@ -40,13 +40,15 @@ class StatusController {
         queue.async {
             repeat {
                 let newStatus = self.getCurrentStatus()
-                // GDOLog.logDebug("New status is \(newStatus)")
 
-                DispatchQueue.main.async {
-                    self.status = newStatus
+                if self.status != newStatus {
+                    GDOLog.logDebug("New status is \(newStatus)")
                 }
 
-                let interval: UInt32 = 10 * 1000 // Delay 10ms (1000 is 0.001 seconds)
+                self.status = newStatus
+
+                // Delay 500ms (1000 is 0.001 seconds)
+                let interval: UInt32 = 500 * 1000
                 usleep(interval);
             } while true
         }
@@ -74,6 +76,7 @@ class StatusController {
 
         // GDOLog.logDebug("Sonar distance: \(distanceInCM) cm")
 
-        return .closed
+        // Door is closed if sonar distance is less than max allowable threshold of door closed
+        return distanceInCM <= doorClosedMaxDistanceThreshold ? .closed : .open
     }
 }

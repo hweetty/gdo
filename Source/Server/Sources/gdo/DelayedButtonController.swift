@@ -17,20 +17,37 @@ class DelayedButtonController {
 
     weak var delegate: DelayedButtonControllerDelegate? = nil
 
-    private let gpios = SwiftyGPIO.GPIOs(for:.RaspberryPi3)
-    private let buttonPin: GPIO
+    private let delayInterval = Environment.delayButtonInterval
+    private var timer: Timer? = nil
+
+    private let buttonPin = Environment.delayButtonPin
+
 
     init(delegate: DelayedButtonControllerDelegate? = nil) {
         self.delegate = delegate
 
-        self.buttonPin = gpios[.P22]!
         buttonPin.direction = .IN
         buttonPin.pull = .up
 
         buttonPin.onFalling { [weak self] _ in
             GDOLog.logInfo("Delay trigger button pressed")
 
-            self?.delegate?.delayButtonTriggered()
+            self?.restartTimer()
         }
+    }
+
+    private func restartTimer() {
+        timer?.invalidate()
+
+        timer = Timer.scheduledTimer(withTimeInterval: delayInterval, repeats: false) { [weak self] _ in
+            self?.timerTriggered()
+        }
+    }
+
+    @objc private func timerTriggered() {
+        timer?.invalidate()
+        timer = nil
+
+        delegate?.delayButtonTriggered()
     }
 }
