@@ -18,7 +18,7 @@ class DelayedButtonController {
     weak var delegate: DelayedButtonControllerDelegate? = nil
 
     private let delayInterval = Environment.delayButtonInterval
-    private var timer: Timer? = nil
+    private var timer: DispatchSourceTimer? = nil
 
     private let buttonPin = Environment.delayButtonPin
 
@@ -30,22 +30,24 @@ class DelayedButtonController {
         buttonPin.pull = .up
 
         buttonPin.onFalling { [weak self] _ in
-            GDOLog.logInfo("Delay trigger button pressed")
-
             self?.restartTimer()
         }
     }
 
     private func restartTimer() {
-        timer?.invalidate()
+        timer?.cancel()
 
-        timer = Timer.scheduledTimer(withTimeInterval: delayInterval, repeats: false) { [weak self] _ in
+        let queue = DispatchQueue(label: "ca.jerryyu.delayedButtonTimerQueue")
+        timer = DispatchSource.makeTimerSource(queue: queue)
+        timer?.schedule(deadline: .now() + delayInterval, repeating: .never)
+        timer?.setEventHandler { [weak self] in
             self?.timerTriggered()
         }
+        timer?.resume()
     }
 
     @objc private func timerTriggered() {
-        timer?.invalidate()
+        timer?.cancel()
         timer = nil
 
         delegate?.delayButtonTriggered()

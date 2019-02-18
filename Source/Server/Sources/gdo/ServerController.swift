@@ -31,7 +31,9 @@ class ServerController: ServerRequestHandler, DelayedButtonControllerDelegate {
     // MARK: DelayedButtonControllerDelegate
 
     func delayButtonTriggered() {
-        GDOLog.logInfo("sen")
+        GDOLog.logInfo("Acting on delay button - toggling door...")
+        let timestamp = Date().timeIntervalSince1970
+        toggleController.requestToggle(timestamp: timestamp)
     }
 
     // MARK: SocketDelegate
