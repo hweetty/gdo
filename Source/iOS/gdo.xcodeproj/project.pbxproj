@@ -16,8 +16,6 @@
 		F15D5A2221B7A9A000E211F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A2121B7A9A000E211F4 /* Assets.xcassets */; };
 		F15D5A2521B7A9A000E211F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A2321B7A9A000E211F4 /* LaunchScreen.storyboard */; };
 		F15D5A3021B7A9A100E211F4 /* gdoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A2F21B7A9A100E211F4 /* gdoTests.swift */; };
-		F15D5A8921B7AA2300E211F4 /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15D5A7021B7AA0B00E211F4 /* Socket.framework */; };
-		F15D5A8A21B7AA2300E211F4 /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F15D5A7021B7AA0B00E211F4 /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F169EC6D221299F300AB5F8C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC69221299F300AB5F8C /* Logger.swift */; };
 		F169EC6F22129A0300AB5F8C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC6E22129A0300AB5F8C /* Environment.swift */; };
 		F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC7022129A7200AB5F8C /* SocketHelper.swift */; };
@@ -32,40 +30,68 @@
 			remoteGlobalIDString = F15D5A1621B7A99D00E211F4;
 			remoteInfo = gdo;
 		};
-		F15D5A6D21B7AA0B00E211F4 /* PBXContainerItemProxy */ = {
+		F169EC9D221A9F0A00AB5F8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */;
+			containerPortal = F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8C0F4BF61C4E84CC008B2B0A;
 			remoteInfo = Socket;
 		};
-		F15D5A6F21B7AA0B00E211F4 /* PBXContainerItemProxy */ = {
+		F169EC9F221A9F0A00AB5F8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */;
+			containerPortal = F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8CC36E021C4EA1BE00BAA659;
 			remoteInfo = "Socket-iOS";
 		};
-		F15D5A7121B7AA0B00E211F4 /* PBXContainerItemProxy */ = {
+		F169ECA1221A9F0A00AB5F8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */;
+			containerPortal = F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8C5FEE9B1FC319F7002F4CAA;
 			remoteInfo = "Socket-tvOS";
 		};
-		F15D5A7321B7AA0B00E211F4 /* PBXContainerItemProxy */ = {
+		F169ECA3221A9F0A00AB5F8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */;
+			containerPortal = F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8CA9B1631C98A00400E607FB;
 			remoteInfo = SocketTests;
 		};
-		F15D5A8B21B7AA2300E211F4 /* PBXContainerItemProxy */ = {
+		F169ECAE221A9F1D00AB5F8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8CC36DF61C4EA1BE00BAA659;
-			remoteInfo = "Socket-iOS";
+			containerPortal = F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		F169ECB0221A9F1D00AB5F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75211F92207249D8004E41F8;
+			remoteInfo = "CryptoSwift-TestHostApp";
+		};
+		F169ECB2221A9F1D00AB5F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = Tests;
+		};
+		F169ECB4221A9F1D00AB5F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7595C14A2072E48C00EA1A5F;
+			remoteInfo = "TestsPerformance-Mac";
+		};
+		F169ECB6221A9F1D00AB5F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7564F0602072EAEB00CA5A96;
+			remoteInfo = "TestsPerformance-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -76,7 +102,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F15D5A8A21B7AA2300E211F4 /* Socket.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,11 +122,12 @@
 		F15D5A2B21B7A9A100E211F4 /* gdoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gdoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15D5A2F21B7A9A100E211F4 /* gdoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gdoTests.swift; sourceTree = "<group>"; };
 		F15D5A3121B7A9A100E211F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = BlueSocket.xcodeproj; sourceTree = "<group>"; };
 		F169EC69221299F300AB5F8C /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		F169EC6E22129A0300AB5F8C /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F169EC7022129A7200AB5F8C /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		F169EC722217DEB600AB5F8C /* SocketServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketServer.swift; sourceTree = "<group>"; };
+		F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSocket.xcodeproj; path = ../BlueSocket.xcodeproj; sourceTree = "<group>"; };
+		F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ".build/checkouts/CryptoSwift.git--2927693163588657478/CryptoSwift.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +135,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F15D5A8921B7AA2300E211F4 /* Socket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +169,7 @@
 				F15D5A1921B7A99D00E211F4 /* gdo */,
 				F1233C4A22100B0100EC85D9 /* SharedSwift */,
 				F15D5A2E21B7A9A100E211F4 /* gdoTests */,
-				F15D5A4B21B7AA0B00E211F4 /* BlueSocket */,
+				F169EC96221A9F0200AB5F8C /* Dependencies */,
 				F15D5A1821B7A99D00E211F4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,22 +205,35 @@
 			path = gdoTests;
 			sourceTree = "<group>";
 		};
-		F15D5A4B21B7AA0B00E211F4 /* BlueSocket */ = {
+		F169EC96221A9F0200AB5F8C /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */,
+				F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */,
+				F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */,
 			);
-			name = BlueSocket;
-			path = Dependencies/BlueSocket;
+			name = Dependencies;
+			path = ".build/checkouts/BlueSocket.git--65795287196731874/Dependencies";
 			sourceTree = "<group>";
 		};
-		F15D5A6721B7AA0B00E211F4 /* Products */ = {
+		F169EC97221A9F0A00AB5F8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F15D5A6E21B7AA0B00E211F4 /* Socket.framework */,
-				F15D5A7021B7AA0B00E211F4 /* Socket.framework */,
-				F15D5A7221B7AA0B00E211F4 /* Socket.framework */,
-				F15D5A7421B7AA0B00E211F4 /* SocketTests.xctest */,
+				F169EC9E221A9F0A00AB5F8C /* Socket.framework */,
+				F169ECA0221A9F0A00AB5F8C /* Socket.framework */,
+				F169ECA2221A9F0A00AB5F8C /* Socket.framework */,
+				F169ECA4221A9F0A00AB5F8C /* SocketTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F169ECA7221A9F1D00AB5F8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F169ECAF221A9F1D00AB5F8C /* CryptoSwift.framework */,
+				F169ECB1221A9F1D00AB5F8C /* CryptoSwift-TestHostApp.app */,
+				F169ECB3221A9F1D00AB5F8C /* Tests.xctest */,
+				F169ECB5221A9F1D00AB5F8C /* TestsPerformance-Mac.xctest */,
+				F169ECB7221A9F1D00AB5F8C /* TestsPerformance-iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,7 +253,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F15D5A8C21B7AA2300E211F4 /* PBXTargetDependency */,
 			);
 			name = gdo;
 			productName = gdo;
@@ -272,8 +309,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F15D5A6721B7AA0B00E211F4 /* Products */;
-					ProjectRef = F15D5A6621B7AA0B00E211F4 /* BlueSocket.xcodeproj */;
+					ProductGroup = F169EC97221A9F0A00AB5F8C /* Products */;
+					ProjectRef = F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */;
+				},
+				{
+					ProductGroup = F169ECA7221A9F1D00AB5F8C /* Products */;
+					ProjectRef = F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -285,32 +326,67 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F15D5A6E21B7AA0B00E211F4 /* Socket.framework */ = {
+		F169EC9E221A9F0A00AB5F8C /* Socket.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Socket.framework;
-			remoteRef = F15D5A6D21B7AA0B00E211F4 /* PBXContainerItemProxy */;
+			remoteRef = F169EC9D221A9F0A00AB5F8C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F15D5A7021B7AA0B00E211F4 /* Socket.framework */ = {
+		F169ECA0221A9F0A00AB5F8C /* Socket.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Socket.framework;
-			remoteRef = F15D5A6F21B7AA0B00E211F4 /* PBXContainerItemProxy */;
+			remoteRef = F169EC9F221A9F0A00AB5F8C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F15D5A7221B7AA0B00E211F4 /* Socket.framework */ = {
+		F169ECA2221A9F0A00AB5F8C /* Socket.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Socket.framework;
-			remoteRef = F15D5A7121B7AA0B00E211F4 /* PBXContainerItemProxy */;
+			remoteRef = F169ECA1221A9F0A00AB5F8C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F15D5A7421B7AA0B00E211F4 /* SocketTests.xctest */ = {
+		F169ECA4221A9F0A00AB5F8C /* SocketTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = SocketTests.xctest;
-			remoteRef = F15D5A7321B7AA0B00E211F4 /* PBXContainerItemProxy */;
+			remoteRef = F169ECA3221A9F0A00AB5F8C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F169ECAF221A9F1D00AB5F8C /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = F169ECAE221A9F1D00AB5F8C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F169ECB1221A9F1D00AB5F8C /* CryptoSwift-TestHostApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "CryptoSwift-TestHostApp.app";
+			remoteRef = F169ECB0221A9F1D00AB5F8C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F169ECB3221A9F1D00AB5F8C /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = F169ECB2221A9F1D00AB5F8C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F169ECB5221A9F1D00AB5F8C /* TestsPerformance-Mac.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "TestsPerformance-Mac.xctest";
+			remoteRef = F169ECB4221A9F1D00AB5F8C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F169ECB7221A9F1D00AB5F8C /* TestsPerformance-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "TestsPerformance-iOS.xctest";
+			remoteRef = F169ECB6221A9F1D00AB5F8C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -367,11 +443,6 @@
 			isa = PBXTargetDependency;
 			target = F15D5A1621B7A99D00E211F4 /* gdo */;
 			targetProxy = F15D5A2C21B7A9A100E211F4 /* PBXContainerItemProxy */;
-		};
-		F15D5A8C21B7AA2300E211F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Socket-iOS";
-			targetProxy = F15D5A8B21B7AA2300E211F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
