@@ -1,11 +1,10 @@
 import Foundation
-import Socket
 
 let GDOLog = Logger()
 
 class ServerController: ServerRequestHandler, DelayedButtonControllerDelegate {
 
-    private let user = User(userId: "123", hmacKey: "456")
+    private let user = User(userId: "mdamon", hmacKey: Array<UInt8>(repeating: 2, count: 32))
     private let socket: SocketServer
 
     private let toggleController = ToggleController()
@@ -13,8 +12,6 @@ class ServerController: ServerRequestHandler, DelayedButtonControllerDelegate {
     private let delayedButtonController = DelayedButtonController()
 
     init(port: Int) {
-        GDOLog.logInfo("Listening on port \(port)")
-
         self.socket = SocketServer(port: port)
         socket.delegate = self
         socket.run()
@@ -41,7 +38,7 @@ class ServerController: ServerRequestHandler, DelayedButtonControllerDelegate {
     func received(dataString: String, from hostName: String) {
         do {
             GDOLog.logDebug("From \(hostName), received:\n\(dataString)")
-            let command = try CommandWrapper.decode(jsonString: dataString)
+            let command = try CommandWrapper.decode(jsonString: dataString, user: user)
 
             switch command.type {
             case .status:

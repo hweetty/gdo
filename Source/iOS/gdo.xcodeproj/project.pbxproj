@@ -16,6 +16,7 @@
 		F141A23B22228B09003405EC /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECAF221A9F1D00AB5F8C /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F141A23C22228B1F003405EC /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECA0221A9F0A00AB5F8C /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F141A23D22228B21003405EC /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECA0221A9F0A00AB5F8C /* Socket.framework */; };
+		F141A23F222293E8003405EC /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A23E222293E8003405EC /* UIView+AutoLayout.swift */; };
 		F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */; };
 		F15D5A1D21B7A99D00E211F4 /* RemoteControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1C21B7A99D00E211F4 /* RemoteControlViewController.swift */; };
 		F15D5A2021B7A99D00E211F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A1E21B7A99D00E211F4 /* Main.storyboard */; };
@@ -122,6 +123,7 @@
 		F141A2362222860D003405EC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F141A238222286E7003405EC /* SetupRemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRemoteViewController.swift; sourceTree = "<group>"; };
 		F141A23A222289B8003405EC /* gdo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gdo.entitlements; sourceTree = "<group>"; };
+		F141A23E222293E8003405EC /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+AutoLayout.swift"; path = "../../../../Presto/_Reusable/UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		F15D5A1721B7A99D00E211F4 /* gdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F15D5A1C21B7A99D00E211F4 /* RemoteControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				F15D5A1C21B7A99D00E211F4 /* RemoteControlViewController.swift */,
 				F141A238222286E7003405EC /* SetupRemoteViewController.swift */,
 				F141A2362222860D003405EC /* Environment.swift */,
+				F141A23E222293E8003405EC /* UIView+AutoLayout.swift */,
 				F15D5A1E21B7A99D00E211F4 /* Main.storyboard */,
 				F15D5A2121B7A9A000E211F4 /* Assets.xcassets */,
 				F15D5A2321B7A9A000E211F4 /* LaunchScreen.storyboard */,
@@ -451,6 +454,7 @@
 				F141A239222286E7003405EC /* SetupRemoteViewController.swift in Sources */,
 				F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */,
 				F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */,
+				F141A23F222293E8003405EC /* UIView+AutoLayout.swift in Sources */,
 				F1233C5322100B0100EC85D9 /* Command.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

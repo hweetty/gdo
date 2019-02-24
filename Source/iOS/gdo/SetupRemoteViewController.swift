@@ -13,8 +13,10 @@ class SetupRemoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let environment = Environment()
-        let vc = RemoteControlViewController(environment: environment)
+        var devEnvironment = Environment()
+        devEnvironment.remotePort = 2917
+
+        let vc = RemoteControlViewController(environment: devEnvironment)
         self.navigationController?.pushViewController(vc, animated: false)
     }
     

@@ -8,10 +8,15 @@
 
 import Foundation
 
-enum CommandDecodeError: Error {
-	case invalidHmac
-	case incorrectUserId
+enum CommandDecodeError: LocalizedError {
 	case generic(String)
+
+	var errorDescription: String? {
+		switch self {
+		case let .generic(str):
+			return str
+		}
+	}
 }
 
 struct CommandWrapper: Codable {
@@ -39,8 +44,7 @@ struct CommandWrapper: Codable {
 
 		// Sanity check userId is for us
 		guard command.userId == user.userId else {
-			GDOLog.logError("Expected userId = '\(user.userId)' but got '\(command.userId)'")
-			throw CommandDecodeError.incorrectUserId
+			throw CommandDecodeError.generic("Expected userId = '\(user.userId)' but got '\(command.userId)'")
 		}
 
 		return command

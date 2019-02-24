@@ -10,10 +10,10 @@ import Foundation
 import SystemConfiguration.CaptiveNetwork
 
 struct Environment: Codable {
-    let remotePort = 1729
-    let localPort = 7890
-    let remoteHostName = "192.168.1.85"
-    let user = User(userId: "mdamon", hmacKey: Array<UInt8>(repeating: 2, count: 32))
+    var remotePort = 1729
+    var localPort = 7890
+    var remoteHostName = "192.168.1.85"
+    var user = User(userId: "mdamon", hmacKey: Array<UInt8>(repeating: 2, count: 32))
 }
 
 func printCurrentWifiInfo() {

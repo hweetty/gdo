@@ -20,7 +20,7 @@ struct SecurityHelper {
         let untrstedHmac = wrapper.hmac
 
 		if untrstedHmac != calculatedHmac {
-			throw CommandDecodeError.invalidHmac
+            throw CommandDecodeError.generic("Message HMAC does not match computed HMAC")
 		}
     }
 
