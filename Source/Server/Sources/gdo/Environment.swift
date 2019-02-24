@@ -1,12 +1,13 @@
 import Foundation
-
-#if canImport(SwiftyGPIO)
 import SwiftyGPIO
-#endif
 
 struct Environment {
     static var isDebug = true
 
+    static var serverPort: Int {
+        if isDebug { return 2917 }
+        return 1729
+    }
     static let clientListeningPort = 7890
 
     /// Maximum distance in cm that we still count as door being closed
@@ -17,13 +18,11 @@ struct Environment {
 
     // MARK: GPIO
 
-#if canImport(SwiftyGPIO)
     static let gpios = SwiftyGPIO.GPIOs(for:.RaspberryPi3)
     static let toggleDoorPin    = Environment.gpios[.P17]!
     static let delayButtonPin   = Environment.gpios[.P22]!
     static let triggerPin       = Environment.gpios[.P23]!
     static let echoPin          = Environment.gpios[.P24]!
-#endif
 
     private init() { /* No-op */ }
 }

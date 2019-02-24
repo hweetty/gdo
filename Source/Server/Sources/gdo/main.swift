@@ -10,8 +10,9 @@ if CommandLine.argc >= 2 {
 GDOLog.logInfo("Running in \(Environment.isDebug ? "debug" : "prod") mode")
 
 // echo "This is my data" > /dev/udp/192.168.1.85/13370
-let port = 1729
+let port = Environment.serverPort
 let server = ServerController(port: port)
+GDOLog.logInfo("Listening on port \(port)")
 
 waitForever()
 
