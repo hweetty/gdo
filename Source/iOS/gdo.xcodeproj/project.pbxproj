@@ -11,14 +11,18 @@
 		F1233C5222100B0100EC85D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4D22100B0100EC85D9 /* User.swift */; };
 		F1233C5322100B0100EC85D9 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4E22100B0100EC85D9 /* Command.swift */; };
 		F141A23122226D4C003405EC /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECAF221A9F1D00AB5F8C /* CryptoSwift.framework */; };
+		F141A2372222860D003405EC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2362222860D003405EC /* Environment.swift */; };
+		F141A239222286E7003405EC /* SetupRemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A238222286E7003405EC /* SetupRemoteViewController.swift */; };
+		F141A23B22228B09003405EC /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECAF221A9F1D00AB5F8C /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F141A23C22228B1F003405EC /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECA0221A9F0A00AB5F8C /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F141A23D22228B21003405EC /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECA0221A9F0A00AB5F8C /* Socket.framework */; };
 		F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */; };
-		F15D5A1D21B7A99D00E211F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1C21B7A99D00E211F4 /* ViewController.swift */; };
+		F15D5A1D21B7A99D00E211F4 /* RemoteControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1C21B7A99D00E211F4 /* RemoteControlViewController.swift */; };
 		F15D5A2021B7A99D00E211F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A1E21B7A99D00E211F4 /* Main.storyboard */; };
 		F15D5A2221B7A9A000E211F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A2121B7A9A000E211F4 /* Assets.xcassets */; };
 		F15D5A2521B7A9A000E211F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A2321B7A9A000E211F4 /* LaunchScreen.storyboard */; };
 		F15D5A3021B7A9A100E211F4 /* gdoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A2F21B7A9A100E211F4 /* gdoTests.swift */; };
 		F169EC6D221299F300AB5F8C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC69221299F300AB5F8C /* Logger.swift */; };
-		F169EC6F22129A0300AB5F8C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC6E22129A0300AB5F8C /* Environment.swift */; };
 		F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC7022129A7200AB5F8C /* SocketHelper.swift */; };
 		F169EC732217DEB600AB5F8C /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC722217DEB600AB5F8C /* SocketServer.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +107,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F141A23B22228B09003405EC /* CryptoSwift.framework in Embed Frameworks */,
+				F141A23C22228B1F003405EC /* Socket.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,9 +119,12 @@
 		F1233C4B22100B0100EC85D9 /* SecurityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityHelper.swift; sourceTree = "<group>"; };
 		F1233C4D22100B0100EC85D9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1233C4E22100B0100EC85D9 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		F141A2362222860D003405EC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		F141A238222286E7003405EC /* SetupRemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRemoteViewController.swift; sourceTree = "<group>"; };
+		F141A23A222289B8003405EC /* gdo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gdo.entitlements; sourceTree = "<group>"; };
 		F15D5A1721B7A99D00E211F4 /* gdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F15D5A1C21B7A99D00E211F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F15D5A1C21B7A99D00E211F4 /* RemoteControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlViewController.swift; sourceTree = "<group>"; };
 		F15D5A1F21B7A99D00E211F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F15D5A2121B7A9A000E211F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F15D5A2421B7A9A000E211F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,7 +133,6 @@
 		F15D5A2F21B7A9A100E211F4 /* gdoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gdoTests.swift; sourceTree = "<group>"; };
 		F15D5A3121B7A9A100E211F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F169EC69221299F300AB5F8C /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		F169EC6E22129A0300AB5F8C /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F169EC7022129A7200AB5F8C /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		F169EC722217DEB600AB5F8C /* SocketServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketServer.swift; sourceTree = "<group>"; };
 		F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSocket.xcodeproj; path = ../BlueSocket.xcodeproj; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F141A23122226D4C003405EC /* CryptoSwift.framework in Frameworks */,
+				F141A23D22228B21003405EC /* Socket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				F1233C4E22100B0100EC85D9 /* Command.swift */,
-				F169EC6E22129A0300AB5F8C /* Environment.swift */,
 				F169EC69221299F300AB5F8C /* Logger.swift */,
 				F1233C4B22100B0100EC85D9 /* SecurityHelper.swift */,
 				F169EC7022129A7200AB5F8C /* SocketHelper.swift */,
@@ -196,8 +204,11 @@
 		F15D5A1921B7A99D00E211F4 /* gdo */ = {
 			isa = PBXGroup;
 			children = (
+				F141A23A222289B8003405EC /* gdo.entitlements */,
 				F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */,
-				F15D5A1C21B7A99D00E211F4 /* ViewController.swift */,
+				F15D5A1C21B7A99D00E211F4 /* RemoteControlViewController.swift */,
+				F141A238222286E7003405EC /* SetupRemoteViewController.swift */,
+				F141A2362222860D003405EC /* Environment.swift */,
 				F15D5A1E21B7A99D00E211F4 /* Main.storyboard */,
 				F15D5A2121B7A9A000E211F4 /* Assets.xcassets */,
 				F15D5A2321B7A9A000E211F4 /* LaunchScreen.storyboard */,
@@ -299,6 +310,11 @@
 				TargetAttributes = {
 					F15D5A1621B7A99D00E211F4 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
 					};
 					F15D5A2A21B7A9A100E211F4 = {
 						CreatedOnToolsVersion = 10.0;
@@ -427,11 +443,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F169EC732217DEB600AB5F8C /* SocketServer.swift in Sources */,
-				F15D5A1D21B7A99D00E211F4 /* ViewController.swift in Sources */,
-				F169EC6F22129A0300AB5F8C /* Environment.swift in Sources */,
+				F15D5A1D21B7A99D00E211F4 /* RemoteControlViewController.swift in Sources */,
 				F1233C5022100B0100EC85D9 /* SecurityHelper.swift in Sources */,
 				F1233C5222100B0100EC85D9 /* User.swift in Sources */,
+				F141A2372222860D003405EC /* Environment.swift in Sources */,
 				F169EC6D221299F300AB5F8C /* Logger.swift in Sources */,
+				F141A239222286E7003405EC /* SetupRemoteViewController.swift in Sources */,
 				F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */,
 				F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */,
 				F1233C5322100B0100EC85D9 /* Command.swift in Sources */,
@@ -597,6 +614,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gdo/gdo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EP5H87BTMG;
 				INFOPLIST_FILE = gdo/Info.plist;
@@ -616,6 +634,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gdo/gdo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EP5H87BTMG;
 				INFOPLIST_FILE = gdo/Info.plist;

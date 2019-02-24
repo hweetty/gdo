@@ -8,6 +8,8 @@
 
 import UIKit
 
+let GDOLog = Logger()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
