@@ -10,6 +10,7 @@
 		F1233C5022100B0100EC85D9 /* SecurityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4B22100B0100EC85D9 /* SecurityHelper.swift */; };
 		F1233C5222100B0100EC85D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4D22100B0100EC85D9 /* User.swift */; };
 		F1233C5322100B0100EC85D9 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233C4E22100B0100EC85D9 /* Command.swift */; };
+		F141A23122226D4C003405EC /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECAF221A9F1D00AB5F8C /* CryptoSwift.framework */; };
 		F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */; };
 		F15D5A1D21B7A99D00E211F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1C21B7A99D00E211F4 /* ViewController.swift */; };
 		F15D5A2021B7A99D00E211F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A1E21B7A99D00E211F4 /* Main.storyboard */; };
@@ -135,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F141A23122226D4C003405EC /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +165,13 @@
 			path = ../Server/Sources/gdo/SharedSwift;
 			sourceTree = "<group>";
 		};
+		F141A22B22226D4C003405EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F15D5A0E21B7A99D00E211F4 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +180,7 @@
 				F15D5A2E21B7A9A100E211F4 /* gdoTests */,
 				F169EC96221A9F0200AB5F8C /* Dependencies */,
 				F15D5A1821B7A99D00E211F4 /* Products */,
+				F141A22B22226D4C003405EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

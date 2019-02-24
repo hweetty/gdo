@@ -10,15 +10,16 @@ import Foundation
 
 enum CommandDecodeError: Error {
 	case invalidHmac
+	case incorrectUserId
 	case generic(String)
 }
 
 struct CommandWrapper: Codable {
 	let commandData: Data
-	let hmac: String
+	let hmac: [UInt8]
 
 
-	public static func decode(jsonString: String) throws -> Command {
+	public static func decode(jsonString: String, user: User) throws -> Command {
 		guard let data = jsonString.data(using: .utf8) else {
 			throw CommandDecodeError.generic("GDO error: Failed to convert jsonString into data")
 		}
@@ -29,11 +30,18 @@ struct CommandWrapper: Codable {
 		GDOLog.logDebug("1) Decoded commandWrapper")
 
 		// Verify hmac
-		try SecurityHelper.verifySecurity(of: commandWrapper)
+		try SecurityHelper.verifySecurity(of: commandWrapper, user: user)
 		GDOLog.logDebug("2) Verified hmac")
 
+		// Decode
 		let command = try decoder.decode(Command.self, from: commandWrapper.commandData)
 		GDOLog.logDebug("3) Decoded command")
+
+		// Sanity check userId is for us
+		guard command.userId == user.userId else {
+			GDOLog.logError("Expected userId = '\(user.userId)' but got '\(command.userId)'")
+			throw CommandDecodeError.incorrectUserId
+		}
 
 		return command
 	}
@@ -56,7 +64,7 @@ extension CommandWrapper {
 			)
 
 			let commandData = try encoder.encode(command)
-			let hmac = SecurityHelper.generateHmac(from: commandData, hmacKey: user.hmacKey)
+			let hmac = SecurityHelper.generateHmac(from: commandData, key: user.hmacKey)
 			let commandWrapper = CommandWrapper(commandData: commandData, hmac: hmac)
 
 			let data = try encoder.encode(commandWrapper)
@@ -95,6 +103,6 @@ struct StatusCommandDetails: Codable {
 	let isGarageOpen: Bool
 }
 
-struct ToggleCommanddetails: Codable {
+struct ToggleCommandDetails: Codable {
 	// No-op
 }

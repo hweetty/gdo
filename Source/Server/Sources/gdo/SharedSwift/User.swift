@@ -10,5 +10,5 @@ import Foundation
 
 struct User: Codable {
 	var userId: String
-	var hmacKey: String
+	var hmacKey: [UInt8]
 }

@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 	let remotePort = 1729
 	let remoteHostName = "192.168.1.85"
 
-	let user = User(userId: "test1", hmacKey: "123asd")
+	let user = User(userId: "mdamon", hmacKey: Array<UInt8>(repeating: 2, count: 32))
 
 	static let localPort = 7890
 	let localServer = SocketServer(port: ViewController.localPort, using: DispatchQueue.main)
@@ -53,7 +53,7 @@ extension ViewController: ServerRequestHandler {
 		print("received datastring:", dataString, hostName)
 
 		do {
-			let command = try CommandWrapper.decode(jsonString: dataString)
+			let command = try CommandWrapper.decode(jsonString: dataString, user: user)
 			statusLabel.text = command.description
 		} catch {
 			GDOLog.logError("Failed to decode message. Error: \(error.localizedDescription)")
