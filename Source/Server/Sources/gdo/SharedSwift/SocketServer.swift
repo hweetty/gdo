@@ -42,7 +42,6 @@ class SocketServer {
                 try self.listenSocket = Socket.create(family: .inet, type: .datagram, proto: .udp)
 
                 guard let socket = self.listenSocket else {
-
                     print("Unable to unwrap socket...")
                     return
                 }
@@ -77,9 +76,7 @@ class SocketServer {
 						self.delegate?.received(dataString: dataStr, from: hostName)
 					}
                 }
-
-            }
-            catch let error {
+            } catch let error {
                 guard let socketError = error as? Socket.Error else {
                     print("Unexpected error...")
                     return

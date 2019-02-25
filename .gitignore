@@ -4,6 +4,7 @@
 /Packages
 /*.xcodeproj
 **/*.private
+Private/**
 
 **/*.xcodeproj/project.xcworkspace/xcuserdata/*
 
