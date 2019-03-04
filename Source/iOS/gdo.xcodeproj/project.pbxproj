@@ -19,6 +19,8 @@
 		F141A24E2223AC7B003405EC /* QRCodeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A24D2223AC7B003405EC /* QRCodeButtonView.swift */; };
 		F141A2552223B6EF003405EC /* GDO+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2542223B6EF003405EC /* GDO+UIColor.swift */; };
 		F141A2562223B742003405EC /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2522223B6C1003405EC /* UIView+AutoLayout.swift */; };
+		F141A2582223BA2E003405EC /* QRShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2572223BA2E003405EC /* QRShapeView.swift */; };
+		F141A25A2223BA44003405EC /* QRCornerShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2592223BA43003405EC /* QRCornerShapeLayer.swift */; };
 		F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */; };
 		F15D5A1D21B7A99D00E211F4 /* RemoteControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D5A1C21B7A99D00E211F4 /* RemoteControlViewController.swift */; };
 		F15D5A2021B7A99D00E211F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D5A1E21B7A99D00E211F4 /* Main.storyboard */; };
@@ -28,6 +30,7 @@
 		F169EC6D221299F300AB5F8C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC69221299F300AB5F8C /* Logger.swift */; };
 		F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC7022129A7200AB5F8C /* SocketHelper.swift */; };
 		F169EC732217DEB600AB5F8C /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC722217DEB600AB5F8C /* SocketServer.swift */; };
+		F1EA8BDB222CA65F004FFA6D /* GQScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA8BDA222CA65F004FFA6D /* GQScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +131,8 @@
 		F141A24D2223AC7B003405EC /* QRCodeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeButtonView.swift; sourceTree = "<group>"; };
 		F141A2522223B6C1003405EC /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		F141A2542223B6EF003405EC /* GDO+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GDO+UIColor.swift"; sourceTree = "<group>"; };
+		F141A2572223BA2E003405EC /* QRShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRShapeView.swift; sourceTree = "<group>"; };
+		F141A2592223BA43003405EC /* QRCornerShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCornerShapeLayer.swift; sourceTree = "<group>"; };
 		F15D5A1721B7A99D00E211F4 /* gdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15D5A1A21B7A99D00E211F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F15D5A1C21B7A99D00E211F4 /* RemoteControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +148,7 @@
 		F169EC722217DEB600AB5F8C /* SocketServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketServer.swift; sourceTree = "<group>"; };
 		F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSocket.xcodeproj; path = ../BlueSocket.xcodeproj; sourceTree = "<group>"; };
 		F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ".build/checkouts/CryptoSwift.git--2927693163588657478/CryptoSwift.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		F1EA8BDA222CA65F004FFA6D /* GQScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GQScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +195,9 @@
 		F141A24F2223B247003405EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F141A25B2223BBBF003405EC /* QRShapeView */,
 				F141A24D2223AC7B003405EC /* QRCodeButtonView.swift */,
+				F1EA8BDA222CA65F004FFA6D /* GQScannerViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,6 +218,15 @@
 				F141A2542223B6EF003405EC /* GDO+UIColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F141A25B2223BBBF003405EC /* QRShapeView */ = {
+			isa = PBXGroup;
+			children = (
+				F141A2592223BA43003405EC /* QRCornerShapeLayer.swift */,
+				F141A2572223BA2E003405EC /* QRShapeView.swift */,
+			);
+			path = QRShapeView;
 			sourceTree = "<group>";
 		};
 		F15D5A0E21B7A99D00E211F4 = {
@@ -480,12 +497,15 @@
 				F1233C5022100B0100EC85D9 /* SecurityHelper.swift in Sources */,
 				F1233C5222100B0100EC85D9 /* User.swift in Sources */,
 				F141A2372222860D003405EC /* Environment.swift in Sources */,
+				F141A2582223BA2E003405EC /* QRShapeView.swift in Sources */,
 				F169EC6D221299F300AB5F8C /* Logger.swift in Sources */,
 				F141A2552223B6EF003405EC /* GDO+UIColor.swift in Sources */,
 				F141A2562223B742003405EC /* UIView+AutoLayout.swift in Sources */,
 				F141A239222286E7003405EC /* SetupRemoteViewController.swift in Sources */,
+				F1EA8BDB222CA65F004FFA6D /* GQScannerViewController.swift in Sources */,
 				F15D5A1B21B7A99D00E211F4 /* AppDelegate.swift in Sources */,
 				F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */,
+				F141A25A2223BA44003405EC /* QRCornerShapeLayer.swift in Sources */,
 				F1233C5322100B0100EC85D9 /* Command.swift in Sources */,
 				F141A24E2223AC7B003405EC /* QRCodeButtonView.swift in Sources */,
 			);

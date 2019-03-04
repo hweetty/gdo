@@ -31,6 +31,10 @@ class RemoteControlViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        doubleTapRecognizer.numberOfTapsRequired = 2
+        view.addGestureRecognizer(doubleTapRecognizer)
+
         loadEnvironmentOrShowSetupScreen()
     }
 
@@ -41,7 +45,6 @@ class RemoteControlViewController: UIViewController {
             self.state = .hasEnvironment(environment, localServer)
             start(localServer: localServer)
         } else {
-            // Show setup view
             showSetupViewController()
         }
     }
@@ -51,6 +54,12 @@ class RemoteControlViewController: UIViewController {
         let navVC = UINavigationController(rootViewController: setupVC)
         self.present(navVC, animated: true, completion: nil)
     }
+
+    @objc private func doubleTapped() {
+        showSetupViewController()
+    }
+
+    // MARK: Has environment
 
     func start(localServer: SocketServer) {
 		let queue = DispatchQueue(label: "ca.jerryyu.gdo.clientLocalServer")
@@ -70,12 +79,14 @@ class RemoteControlViewController: UIViewController {
 		SocketHelper.send(data: commandData, to: environment.remoteHostName, port: environment.remotePort)
 	}
 
-	@objc func toggleButtonPressed() {
+	@objc private func toggleButtonPressed() {
 		toggle()
 	}
 
+    // MARK: Helper
+
     private func setupView() {
-        view.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        view.backgroundColor = .white
 
         view.addSubview(statusLabel)
         statusLabel.pin(attributes: [.centerX, .centerY], to: view)

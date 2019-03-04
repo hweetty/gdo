@@ -8,41 +8,12 @@
 
 import UIKit
 
-private class QRShapeLayer: CAShapeLayer {
-
-    override var cornerRadius: CGFloat {
-        get { return 4 }
-        set { /* No-op */ }
-    }
-
-    override init() {
-        super.init()
-
-        updateLayerPath()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSublayers() {
-        super.layoutSublayers()
-
-        updateLayerPath()
-    }
-
-    private func updateLayerPath() {
-        self.path = CGPath(roundedRect: self.bounds, cornerWidth: self.cornerRadius, cornerHeight: self.cornerRadius, transform: nil)
-        self.strokeColor = UIColor.primaryAppColor.cgColor
-        self.lineWidth = 3
-        self.fillColor = nil
-    }
-}
-
 class QRCodeButtonView: UIView {
 
-    private let qrShapeLayer = QRShapeLayer()
-    let qrButton = UIButton(type: .custom)
+    let stackview = UIStackView()
+    private let qrShapeView = QRShapeView()
+    let bottomButton = UIButton(type: .custom)
+    let qrViewController = QRScannerViewController(nibName: nil, bundle: nil)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,8 +28,15 @@ class QRCodeButtonView: UIView {
     private func setupView() {
         backgroundColor = UIColor(white: 0.99, alpha: 1)
 
-        qrShapeLayer.frame = CGRect(x: 110, y: 30, width: 64, height: 64)
-        self.layer.addSublayer(qrShapeLayer)
+        stackview.axis = .vertical
+        stackview.alignment = .center
+        stackview.addArrangedSubview(qrShapeView)
+        stackview.addArrangedSubview(bottomButton)
+        self.addSubview(stackview)
+        stackview.pinToSuperviewEdges()
+
+        addSubview(qrViewController.view)
+        qrViewController.view.pinToSuperviewEdges()
     }
 
 }
