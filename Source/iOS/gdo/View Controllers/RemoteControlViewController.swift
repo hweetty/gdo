@@ -22,7 +22,7 @@ class RemoteControlViewController: UIViewController {
         case needsSetup
     }
 
-    private let defaultTimeInterval: TimeInterval = 5
+    private let defaultTimeInterval: TimeInterval = 3
 
     private var state = State.needsSetup
 
@@ -53,7 +53,9 @@ class RemoteControlViewController: UIViewController {
             localServer.delegate = self
             let timer = Timer.scheduledTimer(timeInterval: defaultTimeInterval, target: self, selector: #selector(pingStatus), userInfo: nil, repeats: true)
             self.state = .hasConfiguration(Configuration(environment: environment, server: localServer, timer: timer))
+
             start(localServer: localServer)
+            pingStatus()
         } else {
             showSetupViewController()
         }
@@ -95,9 +97,15 @@ class RemoteControlViewController: UIViewController {
 
     private func updateStatus(with status: StatusCommandDetails) {
         statusLabel.text = status.isGarageOpen ? "Open" : "Closed"
-        statusDot.pulse()
 
-        // Todo: perform filter to discard out of order packets
+//        let newStyle: DotView.Style = arc4random_uniform(2) == 0 ? .open : .closed
+//        let newStyle: DotView.Style = statusDot.style == .closed ? .open : .closed
+        let newStyle: DotView.Style = status.isGarageOpen ? .open : .closed
+        if statusDot.style == newStyle {
+            statusDot.blink()
+        } else {
+            statusDot.style = newStyle
+        }
     }
 
     @objc private func pingStatus() {
@@ -127,7 +135,7 @@ class RemoteControlViewController: UIViewController {
         stackview.alignment = .center
         stackview.spacing = 8
         view.addSubview(stackview)
-        stackview.pin(attributes: [.centerX], to: view, constant: -(stackview.spacing/2 + statusDot.intrinsicContentSize.width))
+        stackview.pin(attributes: [.centerX], to: view)
         stackview.pin(attributes: [.centerY], to: view, multiplier: 0.4)
 
         toggleButton.backgroundColor = UIColor.primaryAppColor
@@ -159,6 +167,7 @@ extension RemoteControlViewController: ServerRequestHandler {
             switch command.type {
             case .status:
                 let details = try JSONDecoder().decode(StatusCommandDetails.self, from: command.details)
+                // Todo: perform filter to discard out of order packets
                 updateStatus(with: details)
             default:
                 GDOLog.logDebug("Unsupported command of type '\(command.type.rawValue)'")

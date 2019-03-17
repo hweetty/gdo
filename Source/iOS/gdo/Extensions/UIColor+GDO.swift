@@ -1,5 +1,5 @@
 //
-//  GDO+UIColor.swift
+//  UIColor+GDO.swift
 //  gdo
 //
 //  Created by Jerry Yu on 2/24/19.

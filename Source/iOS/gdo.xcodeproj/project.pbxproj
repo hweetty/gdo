@@ -17,7 +17,7 @@
 		F141A23C22228B1F003405EC /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECA0221A9F0A00AB5F8C /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F141A23D22228B21003405EC /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F169ECA0221A9F0A00AB5F8C /* Socket.framework */; };
 		F141A24E2223AC7B003405EC /* QRCodeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A24D2223AC7B003405EC /* QRCodeButtonView.swift */; };
-		F141A2552223B6EF003405EC /* GDO+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2542223B6EF003405EC /* GDO+UIColor.swift */; };
+		F141A2552223B6EF003405EC /* UIColor+GDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2542223B6EF003405EC /* UIColor+GDO.swift */; };
 		F141A2562223B742003405EC /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2522223B6C1003405EC /* UIView+AutoLayout.swift */; };
 		F141A2582223BA2E003405EC /* QRShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2572223BA2E003405EC /* QRShapeView.swift */; };
 		F141A25A2223BA44003405EC /* QRCornerShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141A2592223BA43003405EC /* QRCornerShapeLayer.swift */; };
@@ -131,7 +131,7 @@
 		F141A23A222289B8003405EC /* gdo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gdo.entitlements; sourceTree = "<group>"; };
 		F141A24D2223AC7B003405EC /* QRCodeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeButtonView.swift; sourceTree = "<group>"; };
 		F141A2522223B6C1003405EC /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
-		F141A2542223B6EF003405EC /* GDO+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GDO+UIColor.swift"; sourceTree = "<group>"; };
+		F141A2542223B6EF003405EC /* UIColor+GDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+GDO.swift"; sourceTree = "<group>"; };
 		F141A2572223BA2E003405EC /* QRShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRShapeView.swift; sourceTree = "<group>"; };
 		F141A2592223BA43003405EC /* QRCornerShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCornerShapeLayer.swift; sourceTree = "<group>"; };
 		F15D5A1721B7A99D00E211F4 /* gdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,7 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				F141A2522223B6C1003405EC /* UIView+AutoLayout.swift */,
-				F141A2542223B6EF003405EC /* GDO+UIColor.swift */,
+				F141A2542223B6EF003405EC /* UIColor+GDO.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 				F141A2582223BA2E003405EC /* QRShapeView.swift in Sources */,
 				F1EA8BDF223E1511004FFA6D /* DotView.swift in Sources */,
 				F169EC6D221299F300AB5F8C /* Logger.swift in Sources */,
-				F141A2552223B6EF003405EC /* GDO+UIColor.swift in Sources */,
+				F141A2552223B6EF003405EC /* UIColor+GDO.swift in Sources */,
 				F141A2562223B742003405EC /* UIView+AutoLayout.swift in Sources */,
 				F141A239222286E7003405EC /* SetupRemoteViewController.swift in Sources */,
 				F1EA8BDB222CA65F004FFA6D /* GQScannerViewController.swift in Sources */,

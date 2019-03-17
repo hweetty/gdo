@@ -34,7 +34,7 @@ class SocketServer {
     }
 
     func run() {
-        let queue = DispatchQueue.global(qos: .userInteractive)
+        let queue = DispatchQueue.global()
 
         queue.async { [unowned self] in
 
