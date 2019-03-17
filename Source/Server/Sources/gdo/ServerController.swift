@@ -45,7 +45,7 @@ class ServerController: ServerRequestHandler, DelayedButtonControllerDelegate {
                 sendStatus(to: hostName)
 
             case .toggle:
-                toggleController.requestToggle(timestamp: command.timestamp)
+                toggleController.requestToggle(timestamp: TimeInterval(command.timestamp))
             }
         } catch {
             GDOLog.logError("\(error.localizedDescription)")

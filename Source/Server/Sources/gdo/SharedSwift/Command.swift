@@ -21,7 +21,7 @@ enum CommandDecodeError: LocalizedError {
 
 struct CommandWrapper: Codable {
 	let commandData: Data
-	let hmac: [UInt8]
+	let hmac: String // 64 characters of hexadecimal
 
 
 	public static func decode(jsonString: String, user: User) throws -> Command {
@@ -56,7 +56,7 @@ extension CommandWrapper {
 		let encoder = JSONEncoder()
 
 		let version = 0
-		let timestamp = Date().timeIntervalSince1970
+		let timestamp = Int(Date().timeIntervalSince1970)
 
 		do {
 			let command = Command(
@@ -92,7 +92,7 @@ struct Command: Codable, CustomStringConvertible {
 	// MARK: Meta-data
 	let version: Int
 	let userId: String
-	let timestamp: TimeInterval
+	let timestamp: Int
 
 	// MARK: Actual command
 	let type: CommandType

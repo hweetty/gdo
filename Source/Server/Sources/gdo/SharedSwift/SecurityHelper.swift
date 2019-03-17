@@ -25,14 +25,22 @@ struct SecurityHelper {
     }
 
     /// Uses privatekey to generate hmac for given data
-    static func generateHmac(from data: Data, key: [UInt8]) -> [UInt8] {
+    static func generateHmac(from data: Data, key: [UInt8]) -> String {
         do {
             let result = try HMAC(key: key, variant: .sha256).authenticate(data.bytes)
-            return result
+
+            // Convert to hex
+            let hex = result.flatMap { val -> [String] in
+                let partial = Int(val / 16)
+                let overflow = Int(val % 16)
+                let lookup = "0123456789ABCDEF" as NSString
+                return [ lookup.substring(with: NSMakeRange(partial, 1)), lookup.substring(with: NSMakeRange(overflow, 1)) ]
+            }.reduce("", +)
+
+            return hex
         } catch {
             GDOLog.logError("Error generating Hmac: \(error.localizedDescription)")
-            return []
+            return ""
         }
     }
-
 }
