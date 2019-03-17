@@ -31,6 +31,7 @@
 		F169EC7122129A7200AB5F8C /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC7022129A7200AB5F8C /* SocketHelper.swift */; };
 		F169EC732217DEB600AB5F8C /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169EC722217DEB600AB5F8C /* SocketServer.swift */; };
 		F1EA8BDB222CA65F004FFA6D /* GQScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA8BDA222CA65F004FFA6D /* GQScannerViewController.swift */; };
+		F1EA8BDF223E1511004FFA6D /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA8BDE223E1510004FFA6D /* DotView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		F169EC74221A9EE800AB5F8C /* BlueSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSocket.xcodeproj; path = ../BlueSocket.xcodeproj; sourceTree = "<group>"; };
 		F169ECA6221A9F1D00AB5F8C /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ".build/checkouts/CryptoSwift.git--2927693163588657478/CryptoSwift.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		F1EA8BDA222CA65F004FFA6D /* GQScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GQScannerViewController.swift; sourceTree = "<group>"; };
+		F1EA8BDE223E1510004FFA6D /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				F141A25B2223BBBF003405EC /* QRShapeView */,
 				F141A24D2223AC7B003405EC /* QRCodeButtonView.swift */,
 				F1EA8BDA222CA65F004FFA6D /* GQScannerViewController.swift */,
+				F1EA8BDE223E1510004FFA6D /* DotView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				F1233C5222100B0100EC85D9 /* User.swift in Sources */,
 				F141A2372222860D003405EC /* Environment.swift in Sources */,
 				F141A2582223BA2E003405EC /* QRShapeView.swift in Sources */,
+				F1EA8BDF223E1511004FFA6D /* DotView.swift in Sources */,
 				F169EC6D221299F300AB5F8C /* Logger.swift in Sources */,
 				F141A2552223B6EF003405EC /* GDO+UIColor.swift in Sources */,
 				F141A2562223B742003405EC /* UIView+AutoLayout.swift in Sources */,

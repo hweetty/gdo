@@ -39,7 +39,7 @@ class SetupRemoteViewController: UIViewController {
     }
 
     private func setupViews() {
-        textView.backgroundColor = UIColor(white: 0.98, alpha: 1)
+        textView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         textView.font = UIFont.systemFont(ofSize: 14)
         view.addSubview(textView)
         textView.pin(attributes: [.centerX, .width, .top], to: view)

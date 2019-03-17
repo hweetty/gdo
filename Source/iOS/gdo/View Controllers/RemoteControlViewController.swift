@@ -11,13 +11,22 @@ import Socket
 
 class RemoteControlViewController: UIViewController {
 
+    struct Configuration {
+        var environment: Environment
+        var server: SocketServer
+        var timer: Timer
+    }
+
     private enum State {
-        case hasEnvironment(Environment, SocketServer)
+        case hasConfiguration(Configuration)
         case needsSetup
     }
 
+    private let defaultTimeInterval: TimeInterval = 5
+
     private var state = State.needsSetup
 
+    private let statusDot = DotView()
     private let statusLabel = UILabel()
     private let toggleButton = UIButton(type: .custom)
 
@@ -40,9 +49,10 @@ class RemoteControlViewController: UIViewController {
 
     func loadEnvironmentOrShowSetupScreen() {
         if let environment = Environment.loadFromDiskIfPossible() {
-            let localServer = SocketServer(port: environment.remotePort, using: DispatchQueue.main)
+            let localServer = SocketServer(port: environment.localPort, using: DispatchQueue.main)
             localServer.delegate = self
-            self.state = .hasEnvironment(environment, localServer)
+            let timer = Timer.scheduledTimer(timeInterval: defaultTimeInterval, target: self, selector: #selector(pingStatus), userInfo: nil, repeats: true)
+            self.state = .hasConfiguration(Configuration(environment: environment, server: localServer, timer: timer))
             start(localServer: localServer)
         } else {
             showSetupViewController()
@@ -70,45 +80,74 @@ class RemoteControlViewController: UIViewController {
 	}
 
 	func toggle() {
-        guard case let .hasEnvironment(environment, _) = state else {
+        guard case let .hasConfiguration(config) = state else {
             assertionFailure("Should not be calling toggle() since state does not have environment")
             return
         }
 
-		let commandData = CommandWrapper.serialize(type: .toggle, commandDetails: Dictionary<String, String>(), user: environment.user)
-		SocketHelper.send(data: commandData, to: environment.remoteHostName, port: environment.remotePort)
+		let commandData = CommandWrapper.serialize(type: .toggle, commandDetails: Dictionary<String, String>(), user: config.environment.user)
+		SocketHelper.send(data: commandData, to: config.environment.remoteHostName, port: config.environment.remotePort)
 	}
 
 	@objc private func toggleButtonPressed() {
 		toggle()
 	}
 
+    private func updateStatus(with status: StatusCommandDetails) {
+        statusLabel.text = status.isGarageOpen ? "Open" : "Closed"
+        statusDot.pulse()
+
+        // Todo: perform filter to discard out of order packets
+    }
+
+    @objc private func pingStatus() {
+        guard case let .hasConfiguration(config) = state else {
+            assertionFailure("Should not be calling toggle() since state does not have environment")
+            return
+        }
+
+        let commandData = CommandWrapper.serialize(type: .status, commandDetails: Dictionary<String, String>(), user: config.environment.user)
+        SocketHelper.send(data: commandData, to: config.environment.remoteHostName, port: config.environment.remotePort)
+    }
+
     // MARK: Helper
 
     private func setupView() {
         view.backgroundColor = .white
 
+        statusLabel.text = "Checking..."
+        statusLabel.textColor = .darkText
+        statusLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 24, weight: .medium)
         view.addSubview(statusLabel)
         statusLabel.pin(attributes: [.centerX, .centerY], to: view)
         statusLabel.pin(attributes: [.width], to: view, constant: -32)
 
+        let stackview = UIStackView(arrangedSubviews: [statusDot, statusLabel])
+        stackview.axis = .horizontal
+        stackview.alignment = .center
+        stackview.spacing = 8
+        view.addSubview(stackview)
+        stackview.pin(attributes: [.centerX], to: view, constant: -(stackview.spacing/2 + statusDot.intrinsicContentSize.width))
+        stackview.pin(attributes: [.centerY], to: view, multiplier: 0.4)
+
         toggleButton.backgroundColor = UIColor.primaryAppColor
         toggleButton.layer.cornerRadius = 8
         toggleButton.setTitle("Toggle", for: .normal)
+        let inset: CGFloat = 24
+        toggleButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset*1.5, bottom: inset, right: inset*1.5)
         toggleButton.titleLabel?.font = UIFont.systemFont(ofSize: 42, weight: .medium)
-        toggleButton.setTitleColor(UIColor(white: 0, alpha: 0.7), for: .normal)
+        toggleButton.setTitleColor(.textColor, for: .normal)
         toggleButton.addTarget(self, action: #selector(toggleButtonPressed), for: .touchUpInside)
         view.addSubview(toggleButton)
         toggleButton.pin(width: nil, height: 80)
         toggleButton.pin(attributes: [.bottomMargin], to: view, multiplier: 0.8)
         toggleButton.pin(attributes: [.centerX], to: view)
-        toggleButton.pin(attributes: [.width], to: statusLabel)
     }
 }
 
 extension RemoteControlViewController: ServerRequestHandler {
 	func received(dataString: String, from hostName: String) {
-        guard case let .hasEnvironment(environment, _) = state else {
+        guard case let .hasConfiguration(config) = state else {
             assertionFailure("Should not be receiving messages since state does not have environment")
             return
         }
@@ -116,8 +155,14 @@ extension RemoteControlViewController: ServerRequestHandler {
 		print("received datastring:", dataString, hostName)
 
 		do {
-			let command = try CommandWrapper.decode(jsonString: dataString, user: environment.user)
-			statusLabel.text = command.description
+			let command = try CommandWrapper.decode(jsonString: dataString, user: config.environment.user)
+            switch command.type {
+            case .status:
+                let details = try JSONDecoder().decode(StatusCommandDetails.self, from: command.details)
+                updateStatus(with: details)
+            default:
+                GDOLog.logDebug("Unsupported command of type '\(command.type.rawValue)'")
+            }
 		} catch {
 			GDOLog.logError("Failed to decode message. Error: \(error.localizedDescription)")
 		}
